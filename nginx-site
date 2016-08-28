@@ -1,0 +1,2 @@
+PUT NGINX SITE CONFIG HERE
+this file will be copied to /etc/nginx/sites-available 
