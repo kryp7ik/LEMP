@@ -13,11 +13,12 @@ if [ $CONTINUE = "y" ]; then
 		sudo apt-get install -y nginx
 		sudo mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup
 		echo "Moving default site file to /etc/nginx/sites-available/default.backup"
-		sudo cp nginx-site /etc/nginx/sites-available/default
+		sudo cp nginx-site /etc/nginx/sites-available/myapp
 		read -p "Would you like to modify the Nginx site file? (y/n)" MOD
 		if [ $MOD = "y" ]; then
-			sudo nano /etc/nginx/sites-available/default
+			sudo nano /etc/nginx/sites-available/myapp
 		fi
+		sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/myapp
 		sudo nginx -t
 		sudo systemctl reload nginx
 		sudo systemctl restart nginx
