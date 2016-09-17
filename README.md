@@ -6,5 +6,5 @@ This script is designed to install the following on a fresh install of Ubuntu Se
 - Curl
 - Composer
 - Node.js
-- Socket.io
+- Socket.io, Bower & Gulp
 
