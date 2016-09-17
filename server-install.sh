@@ -4,7 +4,7 @@ echo "- Nginx"
 echo "- Php7.0"
 echo "- MariaDB"
 echo "- Git, Curl & Composer"
-echo "- Node.JS & Socket.io"
+echo "- Node.JS, Gulp, Bower & Socket.io"
 read -p "Continue with installation? (y/n)" CONTINUE
 if [ $CONTINUE = "y" ]; then
 	echo "Note: Script assumes you have a file named nginx-site in script directory to be copied to /etc/nginx/sites-available"
@@ -69,11 +69,16 @@ EOF
 		else
 			curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 		fi
-		sudo apt-get install -y nodejs build-essentials
-		read -p "Install Socket.io? (y/n)" SIO
+		sudo apt-get install -y nodejs build-essentials npm
+		echo "Creating Link for /usr/bin/node due to some packages that attempt to run node rather than nodejs"
+		sudo ln /usr/bin/nodejs /usr/bin/node
+		read -p "Install Socket.io, bower & gulp? (y/n)" SIO
 		if [ $SIO = "y" ];then
-			npm install socket.io
+			sudo npm install -g socket.io
+			sudo npm install -g bower
+			sudo npm install -g gulp-cli
 		fi
+		
 	fi
 else
 	exit
