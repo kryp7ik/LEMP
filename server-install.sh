@@ -69,9 +69,7 @@ EOF
 		else
 			curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 		fi
-		sudo apt-get install -y nodejs build-essentials npm
-		echo "Creating Link for /usr/bin/node due to some packages that attempt to run node rather than nodejs"
-		sudo ln /usr/bin/nodejs /usr/bin/node
+		sudo apt-get install -y nodejs 
 		read -p "Install Socket.io, bower & gulp? (y/n)" SIO
 		if [ $SIO = "y" ];then
 			sudo npm install -g socket.io
